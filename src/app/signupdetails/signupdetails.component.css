@@ -1,0 +1,112 @@
+.BannerImage
+{
+    background-image: url("/assets/banner.jpg");
+    height: 300px;
+    position: relative;
+}
+.cardStyle
+{
+    margin-top: -140px;
+    backdrop-filter: blur(30px);
+
+}
+.cardBodyStyle
+{
+    border: 3px solid #ad1fff !important; 
+    border-radius: 20px;
+}
+.heading
+{  
+    margin-top: -200px;
+    margin-left:200px;
+    color: #ad1fff;
+    position: absolute;
+    font-size: 60px;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+
+}
+@media only screen and (min-width: 375px) {
+.heading
+{
+    margin-left:190px;
+}
+  }
+  
+  /* For devices with a width of 320px (iPhone 5/SE) */
+  @media only screen and (max-width: 320px) {
+    .heading
+    {
+        margin-left:160px;
+    }
+  }
+
+  .BtnStyle
+{
+    background-color: #ad1fff;
+    border: 3px solid #ad1fff !important;
+    height: 45px;
+    width:230px;
+    color:#fff;
+    font-weight: bold;
+    border-radius: 20px;
+    font-size: 18px;
+}
+.labelStyle
+{
+    font-weight:600;
+    font-size: 18px; 
+    float: left;
+}
+.iconStyle
+{
+    font-size: 40px;
+
+    
+}
+.googleIcon
+{
+  background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.gitIcon
+{
+  color:black
+}
+.inputStyle
+{
+    border: 2px solid #ad1fff !important;
+}
+.questionStyle
+{
+    height: 40px;
+    top: 6px;
+    left: -6px;
+    border-right: 2px solid #ad1fff !important;
+    border-top: 2px solid #ad1fff !important;
+    border-bottom: 2px solid #ad1fff !important;
+}
+.qusBtn
+{
+    border: 2px solid #ad1fff !important;
+    height: 40px;
+    border-radius: 8px; 
+}
+.err
+{
+  color: red;
+  font-weight: bold;
+  margin-top: 3px;
+
+}
+.dropStyle
+{
+    margin-top: 6px;
+    height: 40px;
+    border-left: 2px solid #ad1fff !important;
+    border-top: 2px solid #ad1fff !important;
+    border-bottom: 2px solid #ad1fff !important;
+}

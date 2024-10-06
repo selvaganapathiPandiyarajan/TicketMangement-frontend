@@ -1,0 +1,650 @@
+
+<header>
+    <!-- Sidebar -->
+    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse sideNav">
+      <div class="position-sticky">
+        <div class="list-group list-group-flush mx-1 mt-4 sideNav">
+          <a  class="list-group-item list-group-item-action py-2 sideNav">
+            <i class="bx bxs-dashboard fa-fw me-3 SideNav_icon">&nbsp;<span  style="font-size:18px;font-weight: bold;margin-left: -13px;" (click)="getmaindashboard()">Main dashboard</span></i>
+      
+          </a>
+          <a  class="list-group-item list-group-item-action py-2  sideNav" >
+            <i class="bx bxs-user-pin fa-fw me-3 SideNav_icon">&nbsp;<span   style="font-size: 18px;font-weight: bold;" (click)="getProfile()">Profile</span></i>
+          </a>
+       
+          <a  class="list-group-item list-group-item-action py-2 sideNav" ><i
+              class="bx bx-door-open fa-fw me-3 SideNav_icon">&nbsp;<span style="font-size: 18px;font-weight: bold;" (click)="getResetpage()">Reset Password</span></i></a>
+              <a  class="list-group-item list-group-item-action py-2 sideNav"  style="margin-top:20px"><i
+                class="bx bxs-exit fa-fw me-3 SideNav_icon">&nbsp;<span style="font-size: 18px;font-weight: bold;" (click)="logout()" >Log out</span></i></a> 
+        </div>
+      </div>
+    </nav>
+    <!-- Sidebar -->
+
+    <!-- Navbar -->
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light  fixed-top navStyle">
+      <!-- Container wrapper -->
+      <div class="container-fluid">
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button"  data-bs-target="#sidebarMenu"
+          aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <i class='bx bx-chevrons-left' style="font-size:20px"></i>
+        </button>
+
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">
+            <p class="ls-tight logoStyle">
+                D'IT </p>
+        </a>
+
+   
+   
+        <!-- Right links -->
+        <ul class="navbar-nav ms-auto d-flex flex-row">
+          <p style="font-weight: bold;
+          padding-top: 8px;">{{userDetailsvalue.firstname}}</p>
+
+     
+          <!-- Avatar -->
+          <li class="nav-item">
+            <a class="nav-link hidden-arrow d-flex align-items-center" href="#"
+              id="navbarDropdownMenuLink" role="button">
+              <i class='bx bx-user-circle SideNav_icon'></i>
+            </a>
+        
+          </li>
+        </ul>
+      </div>
+      <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+  </header>
+ <!-- Table Section -->
+  <main style="margin-top: 100px;background-color: #f2f2f2;" *ngIf="tableView">
+    <div class="container pt-4">
+
+
+
+      <section>
+
+        <div class="row">
+          <div class="col-xl-3 col-sm-6 col-12 mb-4">
+            <div class="card info_Style">
+              <div class="card-body">
+                <div class="d-flex justify-content-center px-md-1">
+                  <div>
+                    <h3 class="text-info fw-bold card_Style">{{ticketuser.length}}</h3>
+                    <p class="mb-0" style="font-size: 18px;font-weight: bold;">Total Ticket</div>
+                  <div class="align-self-center">
+                    <i class="fas fa-book-open text-info fa-3x"></i>
+                  </div>
+                </div>
+                <div class="px-md-1">
+                  <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                    <div class="progress-bar bg-info" role="progressbar"  [style.width.%]="progressBarPercentage" aria-valuenow="80"
+                      aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 col-12 mb-4">
+            <div class="card warning_Style">
+              <div class="card-body ">
+                <div class="d-flex justify-content-center px-md-1">
+                  <div>
+                    <h3 class="text-warning fw-bold card_Style" style="margin-left: 40px;">{{pendingArr.length}}</h3>
+                    <p class="mb-0" style="font-size: 18px;font-weight: bold;">Open Ticket</p>
+                  </div>
+                  <div class="align-self-center">
+                    <i class="far fa-comments text-warning fa-3x"></i>
+                  </div>
+                </div>
+                <div class="px-md-1">
+                  <div class="progress mt-3 mb-1 rounded" style="height: 7px;">
+                    <div class="progress-bar bg-warning"  role="progressbar" [style.width.%]="50" aria-valuenow="35"
+                      aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 col-12 mb-4">
+            <div class="card success_Style">
+              <div class="card-body ">
+                <div class="d-flex justify-content-center px-md-1">
+                  <div>
+                    <h3 class="text-success fw-bold card_Style "  style="margin-left: 40px;">{{openedArr.length}}</h3>
+                    <p class="mb-0" style="font-size: 18px;font-weight: bold;">Progress Ticket</p>
+                  </div>
+                  <div class="align-self-center">
+                    <i class="fas fa-mug-hot text-success fa-3x"></i>
+                  </div>
+                </div>
+                <div class="px-md-1">
+                  <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                    <div class="progress-bar bg-success" role="progressbar"  [style.width.%]="progressBarPercentagetwo" aria-valuenow="60"
+                      aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 col-12 mb-4">
+            <div class="card danger_Style">
+              <div class="card-body ">
+                <div class="d-flex justify-content-center px-md-1">
+                  <div>
+                    <h3 class="text-danger fw-bold card_Style"  style="margin-left: 40px">{{closedArr.length}}</h3>
+                    <p class="mb-0" style="font-size: 18px;font-weight: bold;">Closed Ticket</p>
+                  </div>
+                  <div class="align-self-center">
+                    <i class="fas fa-map-signs text-danger fa-3x"></i>
+                  </div>
+                </div>
+                <div class="px-md-1">
+                  <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                    <div class="progress-bar bg-danger" role="progressbar"  [style.width.%]="progressBarPercentagethree" aria-valuenow="40"
+                      aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="mt-3">
+        <div class="row">
+          <div class="col-xl-4 col-sm-6 col-12 mb-4">
+            <div class="card list_Card"  style="border: 2px dashed #7d07c1;">
+              <div class="card-body">
+                <div class="d-flex justify-content-between px-md-1">
+                  <div class="align-self-center">
+                    <i class="bx bx-trending-up high_Ticket" ></i>
+                  </div>
+                  <div class="text-end">
+                    <h3 style="color:#7d07c1">{{highArr.length}}</h3>
+                    <p class="mb-0"  style="color:#7d07c1;font-size: 18px;font-weight: bold;">High Level</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-sm-6 col-12 mb-4">
+            <div class="card list_Card" style="border: 2px dashed #006400;">
+              <div class="card-body">
+                <div class="d-flex justify-content-between px-md-1">
+                  <div class="align-self-center">
+                    <i class="bx bx-line-chart medium_Style"></i>
+                  </div>
+                  <div class="text-end">
+                    <h3 style="color:#006400;">{{mediumArr.length}}</h3>
+                    <p class="mb-0" style="color:#006400;font-size: 18px;font-weight: bold;">Medium Level</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-sm-6 col-12 mb-4">
+            <div class="card list_Card" style="border: 2px dashed #FF00FF;">
+              <div class="card-body">
+                <div class="d-flex justify-content-between px-md-1">
+                  <div class="align-self-center">
+                    <i class="bx bx-trending-down low_Style"></i>
+                  </div>
+                  <div class="text-end">
+                    <h3 style="color:#FF00FF">{{lowArr.length || 0}}</h3>
+                    <p class="mb-0" style="color:#FF00FF;font-size: 18px;font-weight: bold">Low Level</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        </section>
+      <section class="mt-4">
+        <div class="card shadow border-0 mb-7">
+          <div class="card-header">
+            <div class="d-felx justify-content-start">
+              <div>   <button class="create_Btn" (click)="ClickticketPage()">Create Ticket</button></div>
+           
+            </div>
+      
+           
+          </div>
+          <div>
+       
+            <input class="mx-2 inp" type="text" placeholder="Global Search" [(ngModel)]="search"/>
+            <i class="bx bx-search-alt-2 search_icon" aria-hidden="true" style="float: right;"></i>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover table-nowrap" id="excel-table">
+              <thead class="thead-light" >
+                <tr style="font-size: 18px;font-weight: bold;">
+                  <th scope="col" class="table_style">Id &nbsp;</th>
+                  <th scope="col" class="table_style">Type</th>
+                  <th scope="col" class="table_style">Service</th>
+                  <th scope="col" class="table_style">Subject</th>
+                  <th scope="col" class="table_style">Text</th>
+                  <th scope="col" class="table_style">Priority
+                    <i class='bx bx-dots-vertical' aria-hidden="true" style="    margin-left: 30px;
+                                font-size: 20px;
+                                font-weight: bold;"   (click)="Clickdropdown()"></i>
+                    <form *ngIf="prioritydrop">
+                      <select class="form-select dropDown_Style" id="Priority"  (change)="changePriority()">
+                        <option value="select1" style="color:rgb(218, 212, 212)">Choose</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+      
+                      </select>
+                    </form>
+                  </th>
+                  <th scope="col" class="table_style">Status<i class="bx bx-dots-vertical" aria-hidden="true" style="margin-left: 30px;
+                                font-size: 18px;
+                                font-weight: bold;" (click)="ClickdropdownTwo()"></i>
+                    <form *ngIf="Questiontrueone" >
+                      <select class="form-select dropDown_Style" id="ticketLevel" (change)="checkticketLevel()" >
+                        <option value="select" style="color:rgb(218, 212, 212)">Choose</option>
+                        <option value="ticket Opened">Open</option>
+                        <option value="ticket pending">Pending</option>
+                        <option value="ticket closed">closed</option>
+      
+                      </select>
+                    </form>
+      
+                  </th>
+                  <th></th>
+                  
+                </tr>
+      
+              </thead>
+              <tbody style="font-size:20px">
+                <tr  *ngFor="let ticket of ticketuser |  filter:search | paginate:{itemsPerPage: tableSize, currentPage: page, totalItems: count} index as i ">
+                 
+                  <th scope="row"  style="font-size:16px">{{i+1}}</th>
+                  <td  style="font-size:16px">{{ticket.type}}</td>
+                  <td  style="font-size:16px">{{ticket.service}}</td>
+                  <td  style="font-size:16px">{{ticket.subject}}</td>
+                  <td  style="font-size:16px">{{ticket.text}}</td>
+      
+                  <td *ngIf="ticket.Priority =='low' "><span class="badge badge-pill bg-soft-success text-black me-2"
+                    style="font-weight: bold;margin-left: 10px; background-color: yellow;font-size: 12px;">{{ticket.Priority}}</span></td>
+                <td *ngIf="ticket.Priority =='medium' "><span
+                    class="badge badge-pill bg-soft-warning text-black me-2"
+                    style="font-weight: bold;margin-left: 10px; background-color: green; font-size: 12px;">{{ticket.Priority}}</span></td>
+                <td *ngIf="ticket.Priority =='high' "><span class="badge badge-pill  text-black me-2"
+                    style="font-weight: bold;margin-left: 10px; background-color: red;font-size: 12px;">{{ticket.Priority}}</span></td>
+                      <td *ngIf="ticket.status =='ticket closed' "><span
+                        class="badge badge-pill  text-black me-2"
+                        style="font-weight: bold;  background-color: green; font-size: 12px;">{{ticket.status}}</span></td>
+                    <td *ngIf="ticket.status =='ticket Opened' "><span
+                        class="badge badge-pill  text-black me-2"
+                        style="font-weight: bold; background-color: yellow;font-size: 12px;">{{ticket.status}}</span></td>
+                    <td *ngIf="ticket.status =='ticket pending' "><span
+                        class="badge badge-pill  text-black me-2"
+                        style="font-weight: bold;  background-color: red;font-size: 12px;">{{ticket.status}}</span></td>
+      <td></td>
+                </tr>
+      
+      
+              </tbody>
+            </table>
+          </div>
+          <!-- Footer -->
+          <footer class="text-center text-lg-start bg-light text-muted">
+            <!-- Section: Social media -->
+            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+              <!-- Left -->
+              <div class="me-5 d-none d-lg-block">
+                <span>
+                  <p style="font-weight: bold;
+          
+                  color: #0a70ca;
+                  font-size: 15px;">Show Entry
+                    <select (change)="sizeChange($event)" class="custom-select">
+                      <option *ngFor="let data of size" [ngValue]="data">
+                        {{ data }}
+                      </option>
+                    </select>
+                  </p>
+                </span>
+              </div>
+
+      
+              <div>
+                <a class="me-4 text-reset">
+                  <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+                </a>
+              </div>
+              <!-- Right -->
+            </section>
+          </footer>
+          <!-- Footer -->
+        </div>
+      </section>
+    </div>
+  </main> 
+  <!-- Create ticket section -->
+  <main style="margin-top: 100px;background-color: #f2f2f2;" *ngIf="ticketView">
+    <div class="container pt-4">
+
+<!-- Section: Design Block -->
+<section class="text-center">
+
+  <!-- Background image -->
+
+  <div class="card mx-4 mx-md-5 shadow-5-strong bg-body-tertiary">
+    <div class="card-body py-5 px-md-5">
+
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h3 class="fw-bold mb-3">Create Ticket</h3>
+          <div class="divider d-flex align-items-center" style="margin-top:10px">
+            </div>
+          <form   [formGroup]="ticketForm">
+       
+            <div class="row" style="margin-top:20px">
+              <div class="col-md-6 mb-4">
+                <label class="form-label labelStyle" for="form3Example1">Issue Type</label>
+                <div class="form-outline">
+                  <input type="text"  class="form-control inputStyle"  placeholder="Enter Issue Type" id="type" formControlName="type"/>
+               
+                </div>
+                <div *ngIf="ticketForm.controls['type'].hasError('required') && ticketForm.controls['type'].touched"
+                class="err">
+                Type is Mandatory
+              </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div  class="form-outline">
+                  <label class="form-label labelStyle" for="form3Example2">Type of Service</label>
+                  <select id="form3Example2" class="form-control inputStyle" formControlName="service">
+                    <option value="choose">Select type of service</option>
+                    <option value="hardware">Hardware</option>
+                    <option  value="software" >Software </option>
+                  </select>
+                            
+                </div>
+              </div>
+            </div>
+            <div class="row" style="margin-top:20px">
+              <div class="col-md-6 mb-4">
+                <label class="form-label labelStyle" for="form3Example1">Subject</label>
+                <div class="form-outline">
+                  <input type="text"  class="form-control inputStyle"   placeholder="Enter Subject" id="subject" formControlName="subject"/>
+           
+                </div>
+                <div *ngIf="ticketForm.controls['subject'].hasError('required') && ticketForm.controls['subject'].touched"
+                class="err" >
+                Subject is Mandatory
+              </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                  <div  class="form-outline">
+                  <label class="form-label labelStyle" for="form3Example2">
+                     Description 
+                    </label>
+                 
+                    <textarea type="textarea"
+                      id="form3Example2"
+                      class="form-control inputStyle" rows="1" cols="20" placeholder="Enter Description" formControlName="text"
+                      ></textarea>
+                      <div *ngIf="ticketForm.controls['text'].hasError('required') && ticketForm.controls['text'].touched"
+                      class="err" >
+                     Description is Mandatory
+                    </div>
+                  </div>
+                </div>
+             
+                  </div>  
+               
+                        <div class="row" style="margin-top:20px">
+                          <div class="col-md-6 mb-4">
+                          
+                            <div class="custom-file">
+                              <label class="form-label labelStyle" for="inputGroupFile02" >Choose file</label>
+                              <input type="file" class="form-control inputStyle" id="attach" formControlName="attach">
+                          
+                            </div>
+                      
+                          </div>
+                      
+                          <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                              <label class="form-label labelStyle" for="form3Example2">Priority level</label>
+                              <select id="form3Example2" class="form-control inputStyle" formControlName="Priority">
+                                <option value="choose">Select Priority level</option>
+                                <option value="high">High</option>
+                                <option  value="medium" >Medium </option>
+                                <option  value="low" >Low </option>
+                          
+                              </select>
+                                        
+                            </div>
+                          </div>
+                        </div>
+
+            <!-- Submit button -->
+            <button type="submit"  class="btn BtnStyle mb-4" (click)="ticketsubmit()">
+             Create
+            </button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Design Block -->
+
+    </div>
+  </main> 
+  <!-- Profile section -->
+  <main style="margin-top: 100px;background-color: #f2f2f2;" *ngIf="profileView">
+    <div class="container pt-4" >
+
+<!-- Section: Design Block -->
+<section class="text-center">
+
+  <!-- Background image -->
+  <button class="editButton" (click)="getEditPage()">Edit Profile</button>
+  <div class="card mx-4 mx-md-5 shadow-5-strong bg-body-tertiary" style="margin-top: 80px;">
+    <div class="card-body py-5 px-md-5">
+
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h3 class="fw-bold mb-3">Profile</h3>
+          <div class="divider d-flex align-items-center" style="margin-top:10px">
+            </div>
+          <form>
+       
+            <div class="row" style="margin-top:30px">
+              <div class="col-md-6 mb-4">
+                <label class="form-label labelStyle" for="form3Example1">First Name</label>
+                <div class="form-outline">
+                  <input type="text"  class="form-control inputformStyle"  value="{{userDetailsvalue?.firstname}}"  id="firstname" readonly />
+               
+                </div>
+             
+              </div>
+              <div class="col-md-6 mb-4">
+                <div  class="form-outline">
+                  <label class="form-label labelStyle" for="form3Example1">Last Name</label>
+                  <div class="form-outline">
+                    <input type="text"  class="form-control inputformStyle"  value="{{userDetailsvalue?.lastname}}"  id="lastname" readonly />
+                 
+                  </div>
+                            
+                </div>
+              </div>
+            </div>
+            <div class="row" style="margin-top:30px">
+              <div class="col-md-6 mb-4">
+                <label class="form-label labelStyle" for="form3Example1">Email</label>
+                <div class="form-outline">
+                  <input type="text"  class="form-control inputformStyle"  value="{{userDetailsvalue?.email}}"  id="email" readonly/>
+               
+                </div>
+            
+              </div>
+              <div class="col-md-6 mb-4">
+                  <div  class="form-outline">
+                    <label class="form-label labelStyle" for="form3Example1">Designation</label>
+                    <div class="form-outline">
+                      <input type="text"  class="form-control inputformStyle"  value="{{userDetailsvalue?.designation}}"  id="designation"  readonly/>
+                   
+                    </div>
+                 
+                
+                  </div>
+                </div>
+             
+                  </div>  
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Design Block -->
+
+    </div>
+  </main> 
+  <!-- edit profile section -->
+  <main style="margin-top: 100px;background-color: #f2f2f2;" *ngIf="editprofileView">
+    <div class="container pt-4" >
+
+<!-- Section: Design Block -->
+<section class="text-center">
+  <div class="card mx-4 mx-md-5 shadow-5-strong bg-body-tertiary">
+    <div class="card-body py-5 px-md-5">
+
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h3 class="fw-bold mb-3">Profile</h3>
+          <div class="divider d-flex align-items-center" style="margin-top:10px">
+            </div>
+          <form>
+       
+            <div class="row" style="margin-top:30px">
+              <div class="col-md-6 mb-4">
+                <label class="form-label labelStyle" for="form3Example1">First Name</label>
+                <div class="form-outline">
+                  <input type="text"  class="form-control inputStyle"  value="{{userDetailsvalue?.firstname}}"  id="firstName"  />
+               
+                </div>
+             
+              </div>
+              <div class="col-md-6 mb-4">
+                <div  class="form-outline">
+                  <label class="form-label labelStyle" for="form3Example1">Last Name</label>
+                  <div class="form-outline">
+                    <input type="text"  class="form-control inputStyle"  value="{{userDetailsvalue?.lastname}}"  id="lastname"  />
+                 
+                  </div>
+                            
+                </div>
+              </div>
+            </div>
+            <div class="row" style="margin-top:30px">
+              <div class="col-md-12 mb-4">
+                <div  class="form-outline">
+                  <label class="form-label labelStyle" for="form3Example1">Designation</label>
+                  <div class="form-outline">
+                    <input type="text"  class="form-control inputStyle"  value="{{userDetailsvalue?.designation}}"  id="designation"  />
+                 
+                  </div>
+               
+              
+                </div>
+              </div>
+              
+          
+             
+                  </div>  
+                  <button class="BtnStyle" (click)="updatetion()">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    </div>
+  </main> 
+  <!-- Reset page section -->
+  <main style="margin-top: 100px;background-color: #f2f2f2;" *ngIf="resetPage">
+    <div class="container pt-4" >
+
+<!-- Section: Design Block -->
+<section class="text-center">
+  <div class="card mx-4 mx-md-5 shadow-5-strong bg-body-tertiary">
+    <div class="card-body py-5 px-md-5">
+
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h3 class="fw-bold mb-3">Reset Password</h3>
+          <div class="divider d-flex align-items-center" style="margin-top:10px">
+            </div>
+            <form  [formGroup]="passwordform">
+              <div  class="form-outline mb-4" style="margin-top:30px">
+                <label class="form-label labelStyle" for="form3Example3">Old Password</label>
+                <input type="email" id="form3Example3" class="form-control inputStyle"  formControlName="oldpass" id="password" placeholder="Enter old Password" (keyup)="checkprevisouspass()"/>
+                <div *ngIf = "passwordform.controls['oldpass'].hasError('required') && passwordform.controls['oldpass'].touched" class="err">
+                  Password is Mandatory
+                         </div>&nbsp;
+                         <div  *ngIf = "passwordcheck"class="err">
+                          In correct Password
+                                  </div>&nbsp;
+              </div>
+       
+              <!-- Password input -->
+              <div  class="form-outline mb-4" style="margin-top:30px">
+                <label class="form-label labelStyle" for="form3Example4">New Password</label>
+                <input type="password" id="form3Example4" class="form-control inputStyle"  id="inputPassword" formControlName="newpass" placeholder="Enter New Password" />
+                <div *ngIf = "passwordform.controls['newpass'].hasError('required') && passwordform.controls['newpass'].touched" class="err">
+                  New Password is Mandatory
+                          </div>&nbsp;
+                          <div   *ngIf = "passwordform.controls['newpass'].hasError('minlength') && passwordform.controls['newpass'].touched" class="err">
+                              Minimum 3 Characters Reqired
+                          </div>&nbsp;
+                          <div  *ngIf = "passwordform.controls['newpass'].hasError('maxlength') && passwordform.controls['newpass'].touched"class="err">
+                              Maximum 8 Characters are Allowed
+                          </div>&nbsp;
+                   <div  *ngIf = "passwordform.controls['newpass'].hasError('pattern') && passwordform.controls['newpass'].touched"class="err">
+         Invalid Password
+               </div> &nbsp;
+              </div>
+          
+              <div  class="form-outline mb-4" style="margin-top:30px"> 
+                <label class="form-label labelStyle" for="form3Example4">Confirm Password</label>
+                <input type="password" id="form3Example4" class="form-control inputStyle"  id="inputPassword" formControlName="conpass" placeholder="Enter Confirm Password" (keyup)="checkPassword()" />
+                <div *ngIf = "passwordform.controls['conpass'].hasError('required') && passwordform.controls['conpass'].touched" class="err">
+                  Retype Password is Mandatory
+                         </div>&nbsp;
+                         <div *ngIf = "passcon" class="err">
+                          Password Doesnot Match
+                        </div>&nbsp;
+              </div>
+         ;      
+  
+              <!-- Submit button -->
+              <button type="submit"  class="btn BtnStyle mb-4" (click)="changepass()">
+               Reset
+              </button>
+  
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    </div>
+  </main>

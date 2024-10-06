@@ -1,0 +1,65 @@
+<section class="background-radial-gradient overflow-hidden">
+       
+        
+    <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+      <div class="row gx-lg-5 align-items-center mb-5">
+        <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+          <h1 class="my-5 display-5 fw-bold ls-tight logoStyle">
+          D'IT soultion<br />
+            <span style="color:hsl(218, 81%, 75%)">Let's make digital change</span>
+          </h1>
+          <h6 class="mb-4 opacity-70" style="color: #fff;font-size:18px; line-height:1.8">
+          We are driven by our clients’ success, and guided by our domain expertise and technology experience and helped us to build the integration layer. 
+          We look forward for greater association to accelerate our growth..
+          </h6>
+        </div>
+  
+        <div class="col-lg-6 mb-5 mb-lg-0 position-relative" >     
+          <div class="card bg-glass">
+            <div class="card-body px-4 py-5 px-md-5">
+              <form [formGroup]="loginForm">
+      
+         
+  
+               <div  class="form-outline mb-4 ">
+                <label class="form-label fw-bold" for="form3Example3"  style="font-size:17px">Email address</label>
+                  <input type="email" id="form3Example3"  formControlName="email" class="form-control inputStyle" placeholder="Enter Email Address" />
+                  <div *ngIf = "loginForm.controls['email'].hasError('required') && loginForm.controls['email'].touched" class=" alert-danger err">
+                    Email Name is Mandatory
+                   </div>
+                   
+           
+                </div>
+  
+             
+                <div  class="form-outline mb-4 ">
+                <label class="form-label fw-bold" for="form3Example4"  style="font-size:17px">Password</label>
+                  <input type="password" id="form3Example4"  formControlName="password"  class="form-control inputStyle"   placeholder="Enter Password"/>
+                  <div *ngIf = "loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched" class=" alert-danger err">
+                    Password is Mandatory
+                           </div>
+                
+                </div> 
+                <div class="form-check d-flex justify-content-start mb-4">
+             
+                  <label class="form-check-label fw-bolder " style="margin-left: -14px;" for="form2Example33">
+                   Click here for <a href="/forgetpage">Forget password</a>
+                  </label>
+                </div>
+           <div class=" d-flex justify-content-center">
+                <button type="submit"  class=" btn-block mb-4 BtnStyle" [disabled]=" loginForm.invalid" (click)="login()">
+                 Login
+                </button>
+                </div>
+ 
+                <div class="text-left">
+                  <p className="fw-bold" style="font-weight: bold;"> Don't have an account?&nbsp;&nbsp;<a href="/signup">sign up</a>&nbsp;here </p>
+                </div> 
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
